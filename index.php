@@ -59,6 +59,7 @@
 						<?php
 							endforeach;
 						?>
+						  
 						
 					</tbody>
 				</table>
