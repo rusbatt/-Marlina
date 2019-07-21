@@ -26,7 +26,7 @@
 
 					<tbody>
 						<?php 
-							$arrUserAll = [
+							/*$arrUserAll = [
 								['id' => '1',
 									'Username' => "Иванов",
 									'Email' => "ivanv@mail.ru"
@@ -36,16 +36,25 @@
 								 'Email' => "petr@mail.ru"
 								],
 								['id' => '3',
-								 'Username' => "Петвывмров", 
-								 'Email' => "petrscsc@mail.ru"
+								 'Username' => "Cидоров", 
+								 'Email' => "sidor@mail.ru"
 								],
 								['id' => '7',
 								 'Username' => "омпмрп", 
 								 'Email' => "pescasctrscsc@mail.ru"
 								]
 
-							];
-							foreach ($arrUserAll as $elem):
+							];*/
+
+							//подключаемся к БД 
+
+							$pdo = new PDO('mysql:host=127.0.0.1;bdname:bd_marlin;charset=utf8', 'root', 'OtsbSslgEEMCovEj');
+							$sql = 'SELECT * FROM users';
+							$statement = $pdo->query($sql);
+							$users = $statement->fetchAll();
+
+
+							foreach ($users as $elem):
 						?>
 						<tr>					
 							<td><?php echo $elem['id']; ?></td>
