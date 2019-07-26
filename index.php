@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h1>User management</h1>
-				<a href="create.html" class="btn btn-success">Add User</a>				
+				<a href="create.php" class="btn btn-success">Add User</a>				
 				<table class="table">
 					<thead>
 						<tr>
