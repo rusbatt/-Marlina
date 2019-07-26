@@ -11,18 +11,22 @@
 		<div class="row">
 			<div class="col-md-6">
 				<h1>Add User</h1>
-				<form action="">
+
+			
+				<form action="handler.php" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="">Username</label>
-						<input type="text" class="form-control">
+						<input name="name" type="text" class="form-control" >
 					</div>
 					<div class="form-group">
 						<label for="">Email</label>
-						<input type="email" class="form-control">
+						<input name="mail" type="email" class="form-control" >
 					</div>
 					<div class="form-group">
 						<label for="">Password</label>
-						<input type="password" class="form-control">
+						<input name="pass" type="password" class="form-control" >
+						<label for="">Add file</label>
+						<input name="imag" type="file">
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-success">Submit</button>
