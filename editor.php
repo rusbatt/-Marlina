@@ -4,6 +4,8 @@
 
     //имя таблицы в ложили в переменную $db_table
     $db_table = "users";
+
+    
     
     //каждый ПОСТ запрос вложили в переменные
     $idLink = $_GET['id'];
@@ -24,7 +26,7 @@
 		$resultUpdate->bindParam(':idEdit', $idLink);
 		$resultUpdate->execute();
 
-		
+
 		$nameFile = $_FILES['imag']['name'];//создаем переменную где значение это имя загруженного файла
 		$tmp_name = $_FILES['imag']['tmp_name'];//создаем переменную где значение это временное хранилище файла
 
