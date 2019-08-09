@@ -21,6 +21,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						
 						<?php 
 							//подключаемся к БД (создав объект)
 							$pdo = new PDO('mysql:host=127.0.0.1;dbname=bd_marlin;charset=utf8;', 'root', 'OtsbSslgEEMCovEj');
@@ -28,7 +29,8 @@
 							$sql = "SELECT * FROM `users`"; // "SELECT * FROM `users`" - это команда из языка sql, которя является значением переменной $sql и само по себе ни каких действии не производит, для этого нам нужена функция query()  
 							$statement = $pdo->query($sql);	// это функция выбора таблицы как и "SELECT * FROM `users`" только в PHP.										
 						 $users = $statement->fetchAll();// а эта функция fetchAll() с помощью которой мы говорим что из выбраной таблиции нам нужны все пользователи.
-
+						 
+						 
 
 						foreach ($users as $elem):
 						?>
@@ -37,10 +39,12 @@
 							<td><?php echo $elem['Username']; ?></td>
 							<td><?php echo $elem['Email']; ?></td>
 						<td>
-							<a href="edit.html" class="btn btn-warning">Edit</a>
+							<a href="edit.php<?='/?id='.$elem['id']?>" class="btn btn-warning">Edit</a>
 							<a href="#" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
 						</td>
 						</tr>
+						
+
 						<?php
 							endforeach;
 						?>

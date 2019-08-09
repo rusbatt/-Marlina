@@ -25,6 +25,8 @@
 					<div class="form-group">
 						<label for="">Password</label>
 						<input name="pass" type="password" class="form-control" >
+					</div>
+					<div class="form-group">
 						<label for="">Add file</label>
 						<input name="imag" type="file">
 					</div>
