@@ -40,7 +40,7 @@
 							<td><?php echo $elem['Email']; ?></td>
 						<td>
 							<a href="edit.php<?='/?id='.$elem['id']?>" class="btn btn-warning">Edit</a>
-							<a href="#" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
+							<a href="del.php<?='/?id='.$elem['id']?>" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
 						</td>
 						</tr>
 						
