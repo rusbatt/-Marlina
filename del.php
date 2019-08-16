@@ -14,7 +14,7 @@
     $resultDelete = $pdo->prepare("DELETE FROM `$db_table` WHERE `id` = :idDel");
     $resultDelete->bindParam(':idDel', $idLink);
     $resultDelete->execute();
-    header('Location: http://marlin/index.php');
+    header('Location: http://marlin/admin.php');
     
     
 

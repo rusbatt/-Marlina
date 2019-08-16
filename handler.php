@@ -11,23 +11,32 @@
     $pass = $_POST['pass'];
 
     if ($name == true and $mail == true and $pass == true) {
-        //с помощью Sql запросза добавили пользователя в БД 
-        $resultSelect = $pdo->prepare("INSERT INTO ".$db_table." (`Username`, `Email`, `password`) VALUES (:name, :mail, :pass)");// prepare -подготовка запроса
-        $resultSelect->bindParam(':name', $name); // bind_param подставляем нужные переменные
-        $resultSelect->bindParam(':mail', $mail);
-        $resultSelect->bindParam(':pass', $pass);
+        
+        $sql = "SELECT * FROM `users` WHERE Email='$mail'";
 
-        $resultSelect->execute(); //выводим запрос 
+        $statement = $pdo->query($sql);                        
+        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+        if ($users) {
+            echo "Указанный Вами почтовый адрес уже занят";
+        }else{
+            $resultSelect = $pdo->prepare("INSERT INTO ".$db_table." (`Username`, `Email`, `password`) VALUES (:name, :mail, :pass)");// prepare -подготовка запроса
+            $resultSelect->bindParam(':name', $name); // bind_param подставляем нужные переменные
+            $resultSelect->bindParam(':mail', $mail);
+            $resultSelect->bindParam(':pass', $pass);
 
-        $nameFile = $_FILES['imag']['name'];//создаем переменную где значение это имя загруженного файла
-        $tmp_name = $_FILES['imag']['tmp_name'];//создаем переменную где значение это временное хранилище файла
+            $resultSelect->execute(); //выводим запрос 
 
-        move_uploaded_file($tmp_name, 'uploads/' . uniqid() . $nameFile);//функция которя из временного хранилеща передает файл в созданую нами папку uploads и присваевает имени файла уникальное имя
+            $nameFile = $_FILES['imag']['name'];//создаем переменную где значение это имя загруженного файла
+            $tmp_name = $_FILES['imag']['tmp_name'];//создаем переменную где значение это временное хранилище файла
+
+            move_uploaded_file($tmp_name, 'uploads/' . uniqid() . $nameFile);//функция которя из временного хранилеща передает файл в созданую нами папку uploads и присваевает имени файла уникальное имя
 
 
 
-        //переходим на index.php
-        header('Location: http://marlin/index.php');
+            //переходим на index.php
+            header('Location: http://marlin/login.php');
+        }              
+            
     } else {
         echo "не все поля заполнены";
     }

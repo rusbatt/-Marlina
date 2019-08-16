@@ -32,7 +32,7 @@
 
 		move_uploaded_file($tmp_name, 'uploads/' . uniqid() . $nameFile);//функция которя из временного хранилеща передает файл в созданую нами папку uploads и присваевает имени файла уникальное имя
 
-		header('Location: http://marlin/index.php');
+		header('Location: http://marlin/admin.php');
 
 		
 	}

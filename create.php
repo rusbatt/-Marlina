@@ -13,7 +13,7 @@
 				<h1>Add User</h1>
 
 			
-				<form action="handler.php" method="POST" enctype="multipart/form-data">
+				<form action="hendlerAdd.php" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="">Username</label>
 						<input name="name" type="text" class="form-control" >
