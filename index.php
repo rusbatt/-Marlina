@@ -35,6 +35,10 @@
 					</div>
 				</form>
 			</div>
+			<div class="col-md-6">
+				<h2><a href="http://marlin/login.php">Log In</a></h2>				
+			</div>
+			<!-- /.col-md-6 -->
 		</div>
 	</div>
 </body>
