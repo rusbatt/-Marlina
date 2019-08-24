@@ -21,6 +21,8 @@ if (!isset($_SESSION['name']) and !isset($_SESSION['password'])) {//Если д�
 	echo "вы вошли как (это сессия)" . $_SESSION['name'];
 	echo "<br>";
 	echo "это кука: (если видешь кука то значит был указан чекбокс если кука нет значит чекбокс не был указан)" . $_COOKIE['login'];
+	echo "<br>";
+	echo '<a href="logaut.php" class="btn btn-warning">выйти из системы</a>';
 }
 
 
@@ -32,7 +34,8 @@ if (!isset($_SESSION['name']) and !isset($_SESSION['password'])) {//Если д�
 	<title>Homepage</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body>	
+<body>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
