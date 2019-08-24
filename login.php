@@ -22,6 +22,9 @@
 						<label for="">Password</label>
 						<input name="pass" type="password" class="form-control" >
 					</div>
+					<div class="form-group">
+						<p><input type="checkbox" name="option" value="a1" > запомнить меня</p>
+					</div>
 					
 					<div class="form-group">
 						<button type="submit" class="btn btn-success">Submit</button>

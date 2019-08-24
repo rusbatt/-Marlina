@@ -1,3 +1,30 @@
+<?php session_start();
+
+
+if (!isset($_SESSION['name']) and !isset($_SESSION['password'])) {//Если данных в сессии вдруг нет
+
+	if (isset($_COOKIE['login']) and isset($_COOKIE['password'])) {//проверяем нужные куки Если они есть - ищем в базе данных пользователя с сохранёнными в них  паролем и емейлом, начинаем новую сессию и записываем туда данные.
+		$pdo = new PDO('mysql:host=127.0.0.1;dbname=bd_marlin;charset=utf8;', 'root', 'OtsbSslgEEMCovEj');
+		//передаем данные из формы и записываем их в переменные
+		$mail = $_POST['mail'];
+		$pass = $_POST['pass'];
+		$sql = "SELECT * FROM `users` WHERE Email='$mail' and password='$pass'";
+        $statement = $pdo->query($sql);                        
+        $users = $statement->fetchAll(PDO::FETCH_ASSOC);//ищем в базе данных пользователя с сохранёнными в них  паролем и емейлом
+
+        $_SESSION['name'] = $mail;//начинаем новую сессию и записываем туда данные.
+        $_SESSION['password'] = $pass;//начинаем новую сессию и записываем туда данные.
+	}else{
+		header('Location: http://marlin/login.php');//Если куки нет - переадресуем пользователя на форму авторизации. 
+	}
+}else{
+	echo "вы вошли как (это сессия)" . $_SESSION['name'];
+	echo "<br>";
+	echo "это кука: (если видешь кука то значит был указан чекбокс если кука нет значит чекбокс не был указан)" . $_COOKIE['login'];
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +36,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+
 				<h1>User management</h1>
 				<a href="create.php" class="btn btn-success">Add User</a>				
 				<table class="table">

@@ -1,9 +1,13 @@
-<?php 
+<?php
+session_start();
 //подкл к БД
 $pdo = new PDO('mysql:host=127.0.0.1;dbname=bd_marlin;charset=utf8;', 'root', 'OtsbSslgEEMCovEj');
-//передаем данные из формы и записываем из в переменные
+//передаем данные из формы и записываем их в переменные
 $mail = $_POST['mail'];
 $pass = $_POST['pass'];
+$checked = $_POST['option'];
+
+
 
 
    
@@ -16,8 +20,22 @@ if ($mail == true and $pass == true) {// если поля фрмы заполн
     
 
    
-    if ($users) {//и если выбраный пользователь существует, то... 
-        header('Location: http://marlin/admin.php');//то пересылаем на страницу где список всех пользователей
+    if ($users) {
+    	$_SESSION['name'] = $mail;
+    	$_SESSION['password'] = $pass;
+
+    	if ($checked) {
+    		setcookie('login', $mail, time() + 259200);
+    		setcookie('password', $pass, time() + 259200);
+
+    	}else{
+    		setcookie('login', '', time() -5);
+    		setcookie('password', '', time() -5);
+    	}
+		header('Location: http://marlin/admin.php');
+		
+
+        
     }else{// но если в БД не существут такого пользователя, то... 
         //то выводим данное сообщение и предлогаем зарегатся.
         echo "вы не зарегистрированы. Пожалуйста" . ' ' .'<a href="http://marlin/index.php">зарегитсруйтесь</a>';
